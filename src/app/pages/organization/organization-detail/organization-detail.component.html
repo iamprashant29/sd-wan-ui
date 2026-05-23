@@ -1,0 +1,82 @@
+@if (vm$ | async; as vm) {
+  @if (vm.loading) {
+    <div class="state-box state-box--loading">Loading organization details…</div>
+  } @else if (vm.error) {
+    <div class="state-box state-box--error">{{ vm.error }}</div>
+  } @else if (vm.data) {
+    <div class="page">
+      <div class="breadcrumb">
+        <a class="breadcrumb__link" routerLink="/organization">Organizations</a>
+        <span class="breadcrumb__sep"> / </span>
+        {{ vm.data.orgName }}
+      </div>
+
+      <h1 class="page-title">{{ vm.data.orgName }}</h1>
+      <p class="page-subtitle">Aggregated site health based on edge-device availability.</p>
+
+      <!-- Summary Cards -->
+      <div class="summary-cards">
+        <div class="card">
+          <span class="card__label">Total Sites</span>
+          <span class="card__value">{{ vm.data.sites.length }}</span>
+        </div>
+        <div class="card">
+          <span class="card__label">Healthy Sites</span>
+          <span class="card__value card__value--healthy">{{ vm.data.healthy }}</span>
+        </div>
+        <div class="card">
+          <span class="card__label">Degraded Sites</span>
+          <span class="card__value card__value--degraded">{{ vm.data.degraded }}</span>
+        </div>
+        <div class="card">
+          <span class="card__label">Down Sites</span>
+          <span class="card__value card__value--down">{{ vm.data.down }}</span>
+        </div>
+        <div class="card">
+          <span class="card__label">Total Edge Devices</span>
+          <span class="card__value">{{ vm.data.totalEdgeDevices }}</span>
+        </div>
+      </div>
+
+      <!-- Sites Table -->
+      <div class="table-card">
+        <div class="table-card__header">
+          <h3 class="table-card__title">Sites</h3>
+          <span class="site-count">{{ vm.data.sites.length }} site{{ vm.data.sites.length === 1 ? '' : 's' }}</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Site Name</th>
+              <th>Status</th>
+              <th>Total Edge Devices</th>
+              <th>Online</th>
+              <th>Offline</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (site of vm.data.sites; track site.id) {
+              <tr>
+                <td>
+                  <a class="site-link" [routerLink]="['/sites', site.id]">{{ site.name }}</a>
+                </td>
+                <td>
+                  <span class="badge" [ngClass]="'badge--' + (site.status ?? '').toLowerCase()">
+                    <span class="badge__dot"></span>{{ site.status }}
+                  </span>
+                </td>
+                <td>{{ site.totalEdgeDevices }}</td>
+                <td class="count--healthy">{{ site.healthy }}</td>
+                <td class="count--down">{{ site.down }}</td>
+              </tr>
+            } @empty {
+              <tr>
+                <td colspan="5" class="empty-row">No sites found for this organization.</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  }
+}

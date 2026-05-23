@@ -1,0 +1,64 @@
+<div class="page">
+  <div class="breadcrumb">Edge Devices</div>
+  <h1 class="page-title">Edge Devices</h1>
+  <p class="page-subtitle">All edge devices across the network.</p>
+
+  @if (vm$ | async; as vm) {
+    @if (vm.loading) {
+      <div class="state-box state-box--loading">Loading edge devices…</div>
+    } @else if (vm.error) {
+      <div class="state-box state-box--error">{{ vm.error }}</div>
+    } @else {
+      <div class="table-card">
+        <div class="table-card__header">
+          <h3 class="table-card__title">All Devices</h3>
+          <span class="device-count">{{ vm.devices.length }} devices</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Device Name</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Uptime</th>
+              <th>System IP</th>
+              <th>Model</th>
+              <th>Site</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (device of vm.devices; track device.name) {
+              <tr>
+                <td>
+                  <a class="device-link" [routerLink]="['/edge-devices', device.name]">
+                    {{ device.name }}
+                  </a>
+                </td>
+                <td>{{ device.role }}</td>
+                <td>
+                  <span class="badge" [ngClass]="'badge--' + (device.status ?? '').toLowerCase()">
+                    <span class="badge__dot"></span>{{ device.status }}
+                  </span>
+                </td>
+                <td>{{ device.uptime }}</td>
+                <td class="mono">{{ device.systemIp }}</td>
+                <td>{{ device.model }}</td>
+                <td>
+                  @if (device.siteId) {
+                    <a class="site-link" [routerLink]="['/sites', device.siteId]">
+                      {{ device.siteId }}
+                    </a>
+                  }
+                </td>
+              </tr>
+            } @empty {
+              <tr>
+                <td colspan="7" class="empty-row">No edge devices found.</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    }
+  }
+</div>

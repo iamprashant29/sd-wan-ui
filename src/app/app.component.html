@@ -1,15 +1,25 @@
 <div class="app-shell">
   <aside class="sidebar">
-    <a class="sidebar__brand" routerLink="/sdwan-dashboard" routerLinkActive="sidebar__brand--active">
+    <a class="sidebar__brand" routerLink="/dashboard" routerLinkActive="sidebar__brand--active">
       SD-WAN Dashboard
     </a>
 
     <nav class="sidebar__nav">
-      <a class="nav-item" routerLink="/dashboard" routerLinkActive="nav-item--active">
+      <a class="nav-item" routerLink="/dashboard" routerLinkActive="nav-item--active"
+         [routerLinkActiveOptions]="{ exact: true }">
         Dashboard
       </a>
-      <a class="nav-item" routerLink="/organization" routerLinkActive="nav-item--active">
+      <a class="nav-item" routerLink="/organization" routerLinkActive="nav-item--active"
+         [routerLinkActiveOptions]="{ exact: true }">
         Organization
+      </a>
+      <a class="nav-item" routerLink="/sites" routerLinkActive="nav-item--active"
+         [routerLinkActiveOptions]="{ exact: true }">
+        Sites
+      </a>
+      <a class="nav-item" routerLink="/edge-devices" routerLinkActive="nav-item--active"
+         [routerLinkActiveOptions]="{ exact: true }">
+        Edge Devices
       </a>
     </nav>
 
