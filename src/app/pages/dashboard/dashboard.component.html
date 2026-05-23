@@ -1,0 +1,65 @@
+@if (vm$ | async; as vm) {
+  @if (vm.loading) {
+    <div class="state-box state-box--loading">Loading dashboard…</div>
+  } @else if (vm.error) {
+    <div class="state-box state-box--error">{{ vm.error }}</div>
+  } @else if (vm.data) {
+    <div class="page">
+      <div class="breadcrumb">Dashboard</div>
+      <h1 class="page-title">Network Status</h1>
+      <p class="page-subtitle">Live device and site health across the network.</p>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--neutral">&#9678;</div>
+          <div class="stat-card__body">
+            <span class="stat-card__label">Total Sites</span>
+            <span class="stat-card__value">{{ vm.data.totalSites }}</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--neutral">&#9678;</div>
+          <div class="stat-card__body">
+            <span class="stat-card__label">Total Edge Devices</span>
+            <span class="stat-card__value">{{ vm.data.totalEdgeDevices }}</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--healthy">&#10003;</div>
+          <div class="stat-card__body">
+            <span class="stat-card__label">Healthy Sites</span>
+            <span class="stat-card__value stat-card__value--healthy">{{ vm.data.healthySites }}</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--degraded">&#9888;</div>
+          <div class="stat-card__body">
+            <span class="stat-card__label">Degraded Sites</span>
+            <span class="stat-card__value stat-card__value--degraded">{{ vm.data.degradedSites }}</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--down">&#10005;</div>
+          <div class="stat-card__body">
+            <span class="stat-card__label">Down Sites</span>
+            <span class="stat-card__value stat-card__value--down">{{ vm.data.downSites }}</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--healthy">&#9679;</div>
+          <div class="stat-card__body">
+            <span class="stat-card__label">Online Devices</span>
+            <span class="stat-card__value stat-card__value--healthy">{{ vm.data.onlineDevices }}</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--down">&#9679;</div>
+          <div class="stat-card__body">
+            <span class="stat-card__label">Offline Devices</span>
+            <span class="stat-card__value stat-card__value--down">{{ vm.data.offlineDevices }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+}

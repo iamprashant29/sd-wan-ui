@@ -1,0 +1,74 @@
+@if (vm$ | async; as vm) {
+  @if (vm.loading) {
+    <div class="state-box state-box--loading">Loading organization data…</div>
+  } @else if (vm.error) {
+    <div class="state-box state-box--error">{{ vm.error }}</div>
+  } @else if (vm.data) {
+    <div class="page">
+      <div class="breadcrumb">Organization</div>
+      <h1 class="page-title">{{ vm.data.organizationName }}</h1>
+      <p class="page-subtitle">Aggregated site health based on edge-device availability.</p>
+
+      <!-- Summary Cards -->
+      <div class="summary-cards">
+        <div class="card">
+          <span class="card__label">Total Sites</span>
+          <span class="card__value">{{ vm.data.totalSites }}</span>
+        </div>
+        <div class="card">
+          <span class="card__label">Healthy Sites</span>
+          <span class="card__value card__value--healthy">{{ vm.data.healthySites }}</span>
+        </div>
+        <div class="card">
+          <span class="card__label">Degraded Sites</span>
+          <span class="card__value card__value--degraded">{{ vm.data.degradedSites }}</span>
+        </div>
+        <div class="card">
+          <span class="card__label">Down Sites</span>
+          <span class="card__value card__value--down">{{ vm.data.downSites }}</span>
+        </div>
+        <div class="card">
+          <span class="card__label">Total Edge Devices</span>
+          <span class="card__value">{{ vm.data.totalEdgeDevices }}</span>
+        </div>
+      </div>
+
+      <!-- Sites Table -->
+      <div class="table-card">
+        <div class="table-card__header">
+          <h3 class="table-card__title">Sites</h3>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Site Name</th>
+              <th>Total Edge Devices</th>
+              <th>Status</th>
+              <th>Healthy</th>
+              <th>Degraded</th>
+              <th>Down</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (site of vm.data.sites; track site.id) {
+              <tr>
+                <td>
+                  <a class="site-link" [routerLink]="['/sites', site.id]">{{ site.name }}</a>
+                </td>
+                <td>{{ site.totalEdgeDevices }}</td>
+                <td>
+                  <span class="badge" [ngClass]="'badge--' + site.status.toLowerCase()">
+                    <span class="badge__dot"></span>{{ site.status }}
+                  </span>
+                </td>
+                <td>{{ site.healthy }}</td>
+                <td>{{ site.degraded }}</td>
+                <td>{{ site.down }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  }
+}
