@@ -1,0 +1,35 @@
+<div class="table-card">
+  <div class="table-card__header">
+    <h3 class="table-card__title">Edge Devices</h3>
+  </div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Device Name</th>
+        <th>Role</th>
+        <th>Uptime</th>
+        <th>Status</th>
+        <th>System IP</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (device of devices; track device.name) {
+        <tr>
+          <td>
+            <a class="device-link" [routerLink]="['/edge-devices', device.name]">
+              {{ device.name }}
+            </a>
+          </td>
+          <td>{{ device.role }}</td>
+          <td>{{ device.uptime }}</td>
+          <td>
+            <span class="badge" [ngClass]="'badge--' + (device.status ?? '').toLowerCase()">
+              <span class="badge__dot"></span>{{ device.status }}
+            </span>
+          </td>
+          <td>{{ device.systemIp }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

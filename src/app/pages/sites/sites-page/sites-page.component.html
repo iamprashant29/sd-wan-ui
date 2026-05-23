@@ -1,0 +1,52 @@
+@if (vm$ | async; as vm) {
+  @if (vm.loading) {
+    <div class="state-box state-box--loading">Loading sites…</div>
+  } @else if (vm.error) {
+    <div class="state-box state-box--error">{{ vm.error }}</div>
+  } @else {
+    <div class="page">
+      <div class="breadcrumb">Sites</div>
+      <h1 class="page-title">Sites</h1>
+      <p class="page-subtitle">All sites and their current edge-device availability.</p>
+
+      <div class="table-card">
+        <div class="table-card__header">
+          <h3 class="table-card__title">All Sites</h3>
+          <span class="site-count">{{ vm.sites.length }} site{{ vm.sites.length === 1 ? '' : 's' }}</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Site Name</th>
+              <th>Status</th>
+              <th>Total Devices</th>
+              <th>Online</th>
+              <th>Offline</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (site of vm.sites; track site.id) {
+              <tr class="clickable-row" [routerLink]="['/sites', site.id]">
+                <td>
+                  <a class="site-link" [routerLink]="['/sites', site.id]">{{ site.name }}</a>
+                </td>
+                <td>
+                  <span class="badge" [ngClass]="'badge--' + (site.status ?? '').toLowerCase()">
+                    <span class="badge__dot"></span>{{ site.status }}
+                  </span>
+                </td>
+                <td>{{ site.totalDevices }}</td>
+                <td class="count--online">{{ site.online }}</td>
+                <td class="count--offline">{{ site.offline }}</td>
+              </tr>
+            } @empty {
+              <tr>
+                <td colspan="5" class="empty-row">No sites found.</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  }
+}

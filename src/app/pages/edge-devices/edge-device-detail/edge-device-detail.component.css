@@ -1,0 +1,343 @@
+.page {
+  max-width: 1000px;
+}
+
+/* ── Breadcrumb ─────────────────────────────────────── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.breadcrumb__link {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.breadcrumb__link:hover { text-decoration: underline; }
+.breadcrumb__sep { color: #94a3b8; }
+.breadcrumb__current { color: #64748b; }
+
+/* ── Page Header ────────────────────────────────────── */
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.page-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a2035;
+}
+
+.page-subtitle {
+  margin: 4px 0 16px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status-badge__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.status-badge--online { background: #dcfce7; color: #16a34a; }
+.status-badge--online .status-badge__dot { background: #16a34a; }
+
+.status-badge--offline { background: #fee2e2; color: #dc2626; }
+.status-badge--offline .status-badge__dot { background: #dc2626; }
+
+/* ── Metadata Row ───────────────────────────────────── */
+.meta-row {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 12px;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.meta-item__label {
+  font-size: 11px;
+  color: #94a3b8;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.meta-item__value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a2035;
+}
+
+.online-text { color: #16a34a; }
+.offline-text { color: #dc2626; }
+
+/* ── Site Chip ──────────────────────────────────────── */
+.site-chip {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #374151;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+/* ── Two-column Detail ──────────────────────────────── */
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.panel {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.panel__title {
+  margin: 0 0 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a2035;
+}
+
+/* ── Interface Tables ───────────────────────────────── */
+.if-section {
+  margin-bottom: 20px;
+}
+
+.if-section:last-child {
+  margin-bottom: 0;
+}
+
+.if-section__heading {
+  margin: 0 0 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.if-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.if-table th {
+  padding: 7px 10px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  color: #94a3b8;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.if-table td {
+  padding: 9px 10px;
+  color: #374151;
+  border-bottom: 1px solid #f8fafc;
+}
+
+.if-table tbody tr:last-child td { border-bottom: none; }
+
+.if-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.if-status__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.if-status--up { color: #16a34a; }
+.if-status--up .if-status__dot { background: #16a34a; }
+
+.if-status--down { color: #dc2626; }
+.if-status--down .if-status__dot { background: #dc2626; }
+
+.ip-cell {
+  font-family: "SFMono-Regular", "Menlo", monospace;
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* ── Bandwidth Chart ────────────────────────────────── */
+.chart-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.time-range {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.time-range__label {
+  font-size: 10px;
+  color: #94a3b8;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.time-range__select {
+  font-size: 12px;
+  color: #374151;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 3px 8px;
+  background: #f8fafc;
+  cursor: pointer;
+  outline: none;
+}
+
+.chart-note {
+  margin: 0 0 12px;
+  font-size: 11px;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+.chart-wrap {
+  position: relative;
+  margin-bottom: 6px;
+}
+
+.chart-svg {
+  display: block;
+  width: 100%;
+  height: 100px;
+  overflow: visible;
+}
+
+.chart-axis {
+  position: relative;
+  height: 18px;
+  margin-top: 4px;
+}
+
+.chart-axis__label {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.chart-legend {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.chart-legend__item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #374151;
+}
+
+.chart-legend__dot {
+  width: 24px;
+  height: 2px;
+  border-radius: 1px;
+}
+
+.chart-legend__dot--wan1 { background: #2563eb; }
+.chart-legend__dot--wan2 { background: #0891b2; }
+
+.wan-stats {
+  display: flex;
+  gap: 24px;
+}
+
+.wan-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.wan-stat__label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.wan-stat__label--wan1 { color: #2563eb; }
+.wan-stat__label--wan2 { color: #0891b2; }
+
+.wan-stat__value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a2035;
+}
+
+.wan-stat__sub {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.no-data {
+  padding: 20px 0;
+  font-size: 13px;
+  color: #94a3b8;
+  text-align: center;
+}
+
+/* ── State Boxes ─────────────────────────────────────── */
+.state-box {
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.state-box--loading {
+  background: #f8fafc;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+}
+
+.state-box--error {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}

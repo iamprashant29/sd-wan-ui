@@ -3,12 +3,12 @@ import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { catchError, map, of, startWith } from 'rxjs';
 import { SdwanApiService } from '../../core/sdwan-api.service';
-import { OrganizationOverview } from '../../core/models';
+import { OrganizationSummary } from '../../core/models';
 
 interface PageState {
   loading: boolean;
   error: string | null;
-  data: OrganizationOverview | null;
+  data: OrganizationSummary[] | null;
 }
 
 @Component({
@@ -21,11 +21,11 @@ interface PageState {
 export class OrganizationComponent {
   private readonly api = inject(SdwanApiService);
 
-  protected readonly vm$ = this.api.getOrganization().pipe(
+  protected readonly vm$ = this.api.getOrganizations().pipe(
     map((data): PageState => ({ loading: false, error: null, data })),
     startWith<PageState>({ loading: true, error: null, data: null }),
     catchError(() =>
-      of<PageState>({ loading: false, error: 'Failed to load organization data. Ensure the backend is running on port 8080.', data: null })
+      of<PageState>({ loading: false, error: 'Failed to load organizations. Ensure the backend is running on port 8080.', data: null })
     )
   );
 }

@@ -43,7 +43,7 @@
   color: #1a2035;
 }
 
-.org-count {
+.site-count {
   font-size: 12px;
   color: #94a3b8;
 }
@@ -82,17 +82,16 @@
   background: #f8fafc;
 }
 
-.org-link {
+.site-link {
   color: #2563eb;
   text-decoration: none;
   font-weight: 500;
 }
 
-.org-link:hover { text-decoration: underline; }
+.site-link:hover { text-decoration: underline; }
 
-.count--healthy { color: #16a34a; font-weight: 600; }
-.count--degraded { color: #d97706; font-weight: 600; }
-.count--down { color: #dc2626; font-weight: 600; }
+.count--online { color: #16a34a; font-weight: 600; }
+.count--offline { color: #dc2626; font-weight: 600; }
 
 .empty-row {
   padding: 24px;

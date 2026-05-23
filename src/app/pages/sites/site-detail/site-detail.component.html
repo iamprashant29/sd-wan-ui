@@ -1,0 +1,40 @@
+@if (vm$ | async; as vm) {
+  @if (vm.loading) {
+    <div class="state-box state-box--loading">Loading site details…</div>
+  } @else if (vm.error) {
+    <div class="state-box state-box--error">{{ vm.error }}</div>
+  } @else if (vm.data) {
+    <div class="page">
+      <nav class="breadcrumb">
+        <a class="breadcrumb__link" routerLink="/sites">Sites</a>
+        <span class="breadcrumb__sep">/</span>
+        <span class="breadcrumb__current">{{ vm.data.name }}</span>
+      </nav>
+
+      <div class="page-header">
+        <h1 class="page-title">{{ vm.data.name }}</h1>
+        <span class="badge" [ngClass]="'badge--' + (vm.data.status ?? '').toLowerCase()">
+          <span class="badge__dot"></span>{{ vm.data.status }}
+        </span>
+      </div>
+      <p class="page-subtitle">Edge-device inventory and current availability for this site.</p>
+
+      <div class="summary-cards">
+        <div class="card">
+          <span class="card__label">Total Edge Devices</span>
+          <span class="card__value">{{ vm.data.totalEdgeDevices }}</span>
+        </div>
+        <div class="card">
+          <span class="card__label">Online</span>
+          <span class="card__value card__value--online">{{ vm.data.online }}</span>
+        </div>
+        <div class="card">
+          <span class="card__label">Offline</span>
+          <span class="card__value card__value--offline">{{ vm.data.offline }}</span>
+        </div>
+      </div>
+
+      <app-edge-device-list [devices]="vm.data.edgeDevices" />
+    </div>
+  }
+}

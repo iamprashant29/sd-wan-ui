@@ -43,7 +43,7 @@
   color: #1a2035;
 }
 
-.org-count {
+.device-count {
   font-size: 12px;
   color: #94a3b8;
 }
@@ -74,25 +74,30 @@
   border-bottom: none;
 }
 
-.clickable-row {
-  cursor: pointer;
-}
-
-.clickable-row:hover {
+.data-table tbody tr:hover {
   background: #f8fafc;
 }
 
-.org-link {
+.device-link {
   color: #2563eb;
   text-decoration: none;
   font-weight: 500;
 }
 
-.org-link:hover { text-decoration: underline; }
+.device-link:hover { text-decoration: underline; }
 
-.count--healthy { color: #16a34a; font-weight: 600; }
-.count--degraded { color: #d97706; font-weight: 600; }
-.count--down { color: #dc2626; font-weight: 600; }
+.site-link {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.site-link:hover { text-decoration: underline; }
+
+.mono {
+  font-family: "SFMono-Regular", "Menlo", monospace;
+  font-size: 12px;
+  color: #64748b;
+}
 
 .empty-row {
   padding: 24px;
@@ -118,14 +123,11 @@
   border-radius: 50%;
 }
 
-.badge--healthy { background: #dcfce7; color: #16a34a; }
-.badge--healthy .badge__dot { background: #16a34a; }
+.badge--online { background: #dcfce7; color: #16a34a; }
+.badge--online .badge__dot { background: #16a34a; }
 
-.badge--degraded { background: #fef3c7; color: #d97706; }
-.badge--degraded .badge__dot { background: #d97706; }
-
-.badge--down { background: #fee2e2; color: #dc2626; }
-.badge--down .badge__dot { background: #dc2626; }
+.badge--offline { background: #fee2e2; color: #dc2626; }
+.badge--offline .badge__dot { background: #dc2626; }
 
 .state-box {
   padding: 20px;

@@ -1,0 +1,45 @@
+@if (vm$ | async; as vm) {
+  <div class="table-card">
+    <div class="table-card__header">
+      <h3 class="table-card__title">Site Health Snapshot</h3>
+      <a class="link" routerLink="/organization">Open organization view</a>
+    </div>
+
+    @if (vm.loading) {
+      <div class="state-box state-box--loading">Loading sites…</div>
+    } @else if (vm.error) {
+      <div class="state-box state-box--error">{{ vm.error }}</div>
+    } @else {
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Site Name</th>
+            <th>Status</th>
+            <th>Total Devices</th>
+            <th>Online</th>
+            <th>Offline</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (site of vm.sites; track site.id) {
+            <tr>
+              <td><a class="site-link" [routerLink]="['/sites', site.id]">{{ site.name }}</a></td>
+              <td>
+                <span class="badge" [ngClass]="'badge--' + (site.status ?? '').toLowerCase()">
+                  <span class="badge__dot"></span>{{ site.status }}
+                </span>
+              </td>
+              <td>{{ site.totalDevices }}</td>
+              <td>{{ site.online }}</td>
+              <td>{{ site.offline }}</td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="5" class="empty-row">No sites found.</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+  </div>
+}

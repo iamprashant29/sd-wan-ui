@@ -94,38 +94,7 @@
       </div>
 
       <!-- Site Health Snapshot -->
-      <div class="table-card">
-        <div class="table-card__header">
-          <h3 class="table-card__title">Site Health Snapshot</h3>
-          <a class="link" routerLink="/organization">Open organization view</a>
-        </div>
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>Site Name</th>
-              <th>Status</th>
-              <th>Total Devices</th>
-              <th>Online</th>
-              <th>Offline</th>
-            </tr>
-          </thead>
-          <tbody>
-            @for (site of vm.data.sites; track site.id) {
-              <tr>
-                <td><a class="site-link" [routerLink]="['/sites', site.id]">{{ site.name }}</a></td>
-                <td>
-                  <span class="badge" [ngClass]="'badge--' + site.status.toLowerCase()">
-                    <span class="badge__dot"></span>{{ site.status }}
-                  </span>
-                </td>
-                <td>{{ site.totalDevices }}</td>
-                <td>{{ site.online }}</td>
-                <td>{{ site.offline }}</td>
-              </tr>
-            }
-          </tbody>
-        </table>
-      </div>
+      <app-site-list />
     }
   }
 </div>

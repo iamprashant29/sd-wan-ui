@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { catchError, map, of, startWith } from 'rxjs';
 import { SdwanApiService } from '../../core/sdwan-api.service';
 import { DashboardOverview } from '../../core/models';
+import { SiteListComponent } from '../sites/site-list/site-list.component';
 
 interface PageState {
   loading: boolean;
@@ -14,7 +14,7 @@ interface PageState {
 @Component({
   selector: 'app-sdwan-dashboard',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, SiteListComponent],
   templateUrl: './sdwan-dashboard.component.html',
   styleUrls: ['./sdwan-dashboard.component.css']
 })
