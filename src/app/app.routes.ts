@@ -1,16 +1,12 @@
 import { Routes } from '@angular/router';
-import { SdwanDashboardComponent } from './pages/sdwan-dashboard/sdwan-dashboard.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'sdwan-dashboard', pathMatch: 'full' },
-  {
-    path: 'sdwan-dashboard',
-    component: SdwanDashboardComponent
-  },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: 'sdwan-dashboard', redirectTo: 'dashboard', pathMatch: 'full' },
   {
     path: 'dashboard',
-    loadComponent: () =>
-      import('./pages/dashboard/dashboard.component').then(m => m.DashboardComponent)
+    component: DashboardComponent
   },
   {
     path: 'organization',
@@ -42,5 +38,5 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/edge-devices/edge-device-detail/edge-device-detail.component').then(m => m.EdgeDeviceDetailComponent)
   },
-  { path: '**', redirectTo: 'sdwan-dashboard' }
+  { path: '**', redirectTo: 'dashboard' }
 ];
