@@ -1,6 +1,33 @@
 @if (vm$ | async; as vm) {
   @if (vm.loading) {
-    <div class="state-box state-box--loading">Loading organization details…</div>
+    <div class="page">
+      <div class="sk sk--h12 sk--w30" style="margin-bottom:20px"></div>
+      <div class="sk sk--h32 sk--w50" style="margin-bottom:6px"></div>
+      <div class="sk sk--h10 sk--w70" style="margin-bottom:24px"></div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px">
+        @for (n of [1,2,3,4,5]; track n) {
+          <div class="sk-card">
+            <span class="sk sk--h10 sk--w60"></span>
+            <span class="sk sk--h32 sk--w40"></span>
+          </div>
+        }
+      </div>
+      <div class="sk-panel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+          <span class="sk sk--h16 sk--w20"></span>
+          <span class="sk sk--h12 sk--w10"></span>
+        </div>
+        @for (n of [1,2,3,4,5]; track n) {
+          <div class="sk-row">
+            <span class="sk sk--h12 sk--w20"></span>
+            <span class="sk sk--h24 sk--w10"></span>
+            <span class="sk sk--h12 sk--w10"></span>
+            <span class="sk sk--h12 sk--w10"></span>
+            <span class="sk sk--h12 sk--w10"></span>
+          </div>
+        }
+      </div>
+    </div>
   } @else if (vm.error) {
     <div class="state-box state-box--error">{{ vm.error }}</div>
   } @else if (vm.data) {

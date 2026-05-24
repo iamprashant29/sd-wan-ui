@@ -5,7 +5,34 @@
 
   @if (vm$ | async; as vm) {
     @if (vm.loading) {
-      <div class="state-box state-box--loading">Loading overview…</div>
+      <div class="summary-cards" style="margin-bottom:20px">
+        @for (n of [1,2,3,4,5]; track n) {
+          <div class="sk-card">
+            <span class="sk sk--h10 sk--w60"></span>
+            <span class="sk sk--h32 sk--w40"></span>
+          </div>
+        }
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px">
+        @for (n of [1,2]; track n) {
+          <div class="sk-panel" style="display:flex;flex-direction:column;gap:12px">
+            <span class="sk sk--h16 sk--w40"></span>
+            <span class="sk sk--h160 sk--w100"></span>
+          </div>
+        }
+      </div>
+      <div class="sk-panel">
+        <span class="sk sk--h16 sk--w30" style="margin-bottom:16px"></span>
+        @for (n of [1,2,3,4,5]; track n) {
+          <div class="sk-row">
+            <span class="sk sk--h12 sk--w20"></span>
+            <span class="sk sk--h12 sk--w10"></span>
+            <span class="sk sk--h12 sk--w10"></span>
+            <span class="sk sk--h12 sk--w10"></span>
+            <span class="sk sk--h12 sk--w10"></span>
+          </div>
+        }
+      </div>
     } @else if (vm.error) {
       <div class="state-box state-box--error">{{ vm.error }}</div>
     } @else if (vm.data) {

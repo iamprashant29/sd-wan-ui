@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/pages/edge-devices/edge-devices.routes.ts"],
-  "sourcesContent": ["import { Routes } from '@angular/router';\n\nexport const edgeDevicesRoutes: Routes = [\n  {\n    path: '',\n    loadComponent: () =>\n      import('./edge-devices-page/edge-devices-page.component').then(m => m.EdgeDevicesPageComponent)\n  },\n  {\n    path: ':deviceName',\n    loadComponent: () =>\n      import('./edge-device-detail/edge-device-detail.component').then(m => m.EdgeDeviceDetailComponent)\n  }\n];\n"],
-  "mappings": ";;;AAEO,IAAM,oBAA4B;EACvC;IACE,MAAM;IACN,eAAe,MACb,OAAO,qBAAiD,EAAE,KAAK,OAAK,EAAE,wBAAwB;;EAElG;IACE,MAAM;IACN,eAAe,MACb,OAAO,qBAAmD,EAAE,KAAK,OAAK,EAAE,yBAAyB;;;",
-  "names": []
-}

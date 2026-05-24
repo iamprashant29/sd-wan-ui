@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/pages/organization/organization.routes.ts"],
-  "sourcesContent": ["import { Routes } from '@angular/router';\n\nexport const organizationRoutes: Routes = [\n  {\n    path: '',\n    loadComponent: () =>\n      import('./organization.component').then(m => m.OrganizationComponent)\n  },\n  {\n    path: ':orgId',\n    loadComponent: () =>\n      import('./organization-detail/organization-detail.component').then(m => m.OrganizationDetailComponent)\n  }\n];\n"],
-  "mappings": ";;;AAEO,IAAM,qBAA6B;EACxC;IACE,MAAM;IACN,eAAe,MACb,OAAO,qBAA0B,EAAE,KAAK,OAAK,EAAE,qBAAqB;;EAExE;IACE,MAAM;IACN,eAAe,MACb,OAAO,qBAAqD,EAAE,KAAK,OAAK,EAAE,2BAA2B;;;",
-  "names": []
-}
