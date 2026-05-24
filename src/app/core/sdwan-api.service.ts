@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { map } from 'rxjs';
+import { forkJoin, map } from 'rxjs';
 import {
   DashboardApiResponse,
   DashboardOverview,
@@ -127,20 +127,30 @@ export class SdwanApiService {
   }
 
   getEdgeDeviceDetail(deviceName: string) {
-    return this.http.get<EdgeDeviceApiResponse>(`${this.baseUrl}/edge-devices/${deviceName}`).pipe(
-      map((d): EdgeDeviceDetail => ({
-        name: d.deviceName,
-        status: this.deviceStatus(d.status),
-        role: d.role,
-        uptime: d.uptime,
-        systemIp: d.systemIp,
-        model: d.model,
-        siteName: d.associatedSite,
-        siteId: d.associatedSite,
-        wanInterfaces: [],
-        lanInterfaces: [],
-        uplinkHistory: []
-      }))
+    return forkJoin({
+      device: this.http.get<EdgeDeviceApiResponse>(`${this.baseUrl}/edge-devices/${deviceName}`),
+      orgs: this.http.get<OrganizationApiResponse[]>(`${this.baseUrl}/organizations`)
+    }).pipe(
+      map(({ device, orgs }): EdgeDeviceDetail => {
+        const siteId = device.associatedSite;
+        const org = orgs.find(o => (o.sites ?? []).some(s => s.siteId === siteId));
+        const site = org?.sites?.find(s => s.siteId === siteId);
+        return {
+          name: device.deviceName,
+          status: this.deviceStatus(device.status),
+          role: device.role,
+          uptime: device.uptime,
+          systemIp: device.systemIp,
+          model: device.model,
+          siteName: site?.siteName ?? siteId,
+          siteId,
+          orgId: org?.orgId ?? '',
+          orgName: org?.orgName ?? 'Organization',
+          wanInterfaces: [],
+          lanInterfaces: [],
+          uplinkHistory: []
+        };
+      })
     );
   }
 

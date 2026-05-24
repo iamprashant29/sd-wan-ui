@@ -7,7 +7,7 @@
     <div class="page">
       <!-- Breadcrumb -->
       <nav class="breadcrumb">
-        <a class="breadcrumb__link" routerLink="/organization">Organization</a>
+        <a class="breadcrumb__link" [routerLink]="['/organization', vm.data.orgId]">{{ vm.data.orgName }}</a>
         <span class="breadcrumb__sep">/</span>
         <a class="breadcrumb__link" [routerLink]="['/sites', vm.data.siteId]">{{ vm.data.siteName }}</a>
         <span class="breadcrumb__sep">/</span>
