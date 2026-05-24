@@ -23,5 +23,9 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./pages/edge-devices/edge-devices.routes').then(m => m.edgeDevicesRoutes)
   },
-  { path: '**', redirectTo: 'dashboard' }
+  {
+    path: '**',
+    loadComponent: () =>
+      import('./pages/not-found/not-found.component').then(m => m.NotFoundComponent)
+  }
 ];

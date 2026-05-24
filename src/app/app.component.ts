@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { LoadingBarComponent } from './shared/loading-bar.component';
+import { ToastComponent } from './shared/toast.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, LoadingBarComponent],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, LoadingBarComponent, ToastComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
