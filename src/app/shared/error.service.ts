@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export interface AppError {
   status: number;
@@ -13,6 +14,9 @@ export class ErrorService {
   readonly currentError$ = this.error$.asObservable();
 
   handle(err: HttpErrorResponse): void {
+    if (!environment.production) {
+      console.error('[ErrorService]', err);
+    }
     this.error$.next({ status: err.status, message: this.toMessage(err) });
   }
 
@@ -27,7 +31,7 @@ export class ErrorService {
       case 403: return 'Forbidden. You do not have permission to perform this action.';
       case 404: return 'The requested resource was not found.';
       case 500: return 'An internal server error occurred. Please try again later.';
-      default:  return err.message || 'An unexpected error occurred.';
+      default:  return 'An unexpected error occurred. Please try again.';
     }
   }
 }
