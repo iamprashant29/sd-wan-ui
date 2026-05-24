@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { catchError, map, of, startWith } from 'rxjs';
-import { SdwanApiService } from '../../../core/sdwan-api.service';
-import { EdgeDeviceSummary } from '../../../core/models';
+import { EdgeDeviceService } from '../edge-device.service';
+import { EdgeDeviceSummary } from '../../../shared/models';
 
 interface PageState {
   loading: boolean;
@@ -19,7 +19,7 @@ interface PageState {
   styleUrls: ['./edge-devices-page.component.css']
 })
 export class EdgeDevicesPageComponent {
-  private readonly api = inject(SdwanApiService);
+  private readonly api = inject(EdgeDeviceService);
 
   protected readonly vm$ = this.api.getEdgeDevices().pipe(
     map((devices): PageState => ({ loading: false, error: null, devices })),

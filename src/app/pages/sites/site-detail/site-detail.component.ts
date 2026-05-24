@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { catchError, combineLatest, map, of, startWith, switchMap } from 'rxjs';
-import { SdwanApiService } from '../../../core/sdwan-api.service';
-import { SiteDetail } from '../../../core/models';
+import { SiteService } from '../site.service';
+import { SiteDetail } from '../../../shared/models';
 import { EdgeDeviceListComponent } from '../../edge-devices/edge-device-list/edge-device-list.component';
 
 interface PageState {
@@ -22,7 +22,7 @@ interface PageState {
   styleUrls: ['./site-detail.component.css']
 })
 export class SiteDetailComponent {
-  private readonly api = inject(SdwanApiService);
+  private readonly api = inject(SiteService);
   private readonly route = inject(ActivatedRoute);
 
   protected readonly vm$ = combineLatest([

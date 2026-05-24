@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { catchError, map, of, startWith } from 'rxjs';
-import { SdwanApiService } from '../../../core/sdwan-api.service';
-import { SiteHealthSnapshot } from '../../../core/models';
+import { SiteService } from '../site.service';
+import { SiteHealthSnapshot } from '../../../shared/models';
 
 interface ListState {
   loading: boolean;
@@ -19,7 +19,7 @@ interface ListState {
   styleUrls: ['./site-list.component.css']
 })
 export class SiteListComponent {
-  private readonly api = inject(SdwanApiService);
+  private readonly api = inject(SiteService);
 
   protected readonly vm$ = this.api.getSites().pipe(
     map((sites): ListState => ({ loading: false, error: null, sites })),

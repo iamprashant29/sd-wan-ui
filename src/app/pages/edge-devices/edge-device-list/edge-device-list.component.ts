@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { EdgeDeviceSummary } from '../../../core/models';
+import { EdgeDeviceSummary } from '../../../shared/models';
 
 @Component({
   selector: 'app-edge-device-list',

@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { catchError, map, of, startWith } from 'rxjs';
-import { SdwanApiService } from '../../../core/sdwan-api.service';
-import { SiteHealthSnapshot } from '../../../core/models';
+import { SiteService } from '../site.service';
+import { SiteHealthSnapshot } from '../../../shared/models';
 
 interface PageState {
   loading: boolean;
@@ -19,7 +19,7 @@ interface PageState {
   styleUrls: ['./sites-page.component.css']
 })
 export class SitesPageComponent {
-  private readonly api = inject(SdwanApiService);
+  private readonly api = inject(SiteService);
 
   protected readonly vm$ = this.api.getSites().pipe(
     map((sites): PageState => ({ loading: false, error: null, sites })),

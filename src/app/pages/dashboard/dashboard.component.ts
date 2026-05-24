@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { catchError, map, of, startWith } from 'rxjs';
-import { SdwanApiService } from '../../core/sdwan-api.service';
-import { DashboardOverview } from '../../core/models';
+import { DashboardService } from './dashboard.service';
+import { DashboardOverview } from '../../shared/models';
 import { SiteListComponent } from '../sites/site-list/site-list.component';
 
 interface PageState {
@@ -19,7 +19,7 @@ interface PageState {
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-  private readonly api = inject(SdwanApiService);
+  private readonly api = inject(DashboardService);
 
   protected readonly vm$ = this.api.getOverview().pipe(
     map((data): PageState => ({ loading: false, error: null, data })),

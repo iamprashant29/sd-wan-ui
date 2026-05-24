@@ -3,8 +3,8 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { catchError, map, of, startWith, switchMap } from 'rxjs';
-import { SdwanApiService } from '../../../core/sdwan-api.service';
-import { BandwidthPoint, EdgeDeviceDetail } from '../../../core/models';
+import { EdgeDeviceService } from '../edge-device.service';
+import { BandwidthPoint, EdgeDeviceDetail } from '../../../shared/models';
 
 interface PageState {
   loading: boolean;
@@ -24,7 +24,7 @@ const PAD = 8;
   styleUrls: ['./edge-device-detail.component.css']
 })
 export class EdgeDeviceDetailComponent {
-  private readonly api = inject(SdwanApiService);
+  private readonly api = inject(EdgeDeviceService);
   private readonly route = inject(ActivatedRoute);
 
   protected readonly timeRanges = ['Last 6 hours', 'Last 24 hours', 'Last 7 days'];

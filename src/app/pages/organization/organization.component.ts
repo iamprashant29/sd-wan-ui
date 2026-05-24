@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { catchError, map, of, startWith } from 'rxjs';
-import { SdwanApiService } from '../../core/sdwan-api.service';
-import { OrganizationSummary } from '../../core/models';
+import { OrganizationService } from './organization.service';
+import { OrganizationSummary } from '../../shared/models';
 
 interface PageState {
   loading: boolean;
@@ -19,7 +19,7 @@ interface PageState {
   styleUrls: ['./organization.component.css']
 })
 export class OrganizationComponent {
-  private readonly api = inject(SdwanApiService);
+  private readonly api = inject(OrganizationService);
 
   protected readonly vm$ = this.api.getOrganizations().pipe(
     map((data): PageState => ({ loading: false, error: null, data })),
