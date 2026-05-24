@@ -50,7 +50,7 @@ var routes = [
   { path: "sdwan-dashboard", redirectTo: "dashboard", pathMatch: "full" },
   {
     path: "dashboard",
-    loadChildren: () => import("./chunk-WMDATB2L.js").then((m) => m.dashboardRoutes)
+    loadChildren: () => import("./chunk-AS3LJ5Q2.js").then((m) => m.dashboardRoutes)
   },
   {
     path: "organization",
@@ -62,7 +62,7 @@ var routes = [
   },
   {
     path: "edge-devices",
-    loadChildren: () => import("./chunk-L7QP6L7T.js").then((m) => m.edgeDevicesRoutes)
+    loadChildren: () => import("./chunk-XZ276WV7.js").then((m) => m.edgeDevicesRoutes)
   },
   {
     path: "**",

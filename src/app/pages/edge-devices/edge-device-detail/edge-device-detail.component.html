@@ -167,6 +167,7 @@
                    preserveAspectRatio="none">
                 <!-- WAN1 line (blue) -->
                 <polyline
+                  class="chart-line chart-line--wan1"
                   [attr.points]="chartPoints(vm.data.uplinkHistory, 'wan1Mbps')"
                   fill="none"
                   stroke="#2563eb"
@@ -175,6 +176,7 @@
                   stroke-linecap="round" />
                 <!-- WAN2 line (teal) -->
                 <polyline
+                  class="chart-line chart-line--wan2"
                   [attr.points]="chartPoints(vm.data.uplinkHistory, 'wan2Mbps')"
                   fill="none"
                   stroke="#0891b2"

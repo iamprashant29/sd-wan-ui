@@ -199,6 +199,31 @@
   color: #64748b;
 }
 
+/* ── Line chart draw animation ──────────────────────── */
+@keyframes line-draw {
+  from { stroke-dashoffset: 700; }
+  to   { stroke-dashoffset: 0; }
+}
+
+.chart-line {
+  stroke-dasharray: 700;
+  stroke-dashoffset: 700;
+  animation: line-draw 1.2s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.chart-line--wan2 {
+  animation-delay: 0.2s;
+}
+
+.chart-wrap {
+  animation: fade-in 0.4s 0.1s both;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
 /* ── Bandwidth Chart ────────────────────────────────── */
 .chart-header {
   display: flex;

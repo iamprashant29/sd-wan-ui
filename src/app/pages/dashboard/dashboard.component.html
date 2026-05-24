@@ -66,7 +66,9 @@
           <h3 class="chart-card__title">Sites by Status</h3>
           <div class="chart-card__body">
             <div class="donut-wrap">
-              <div class="donut" [style.background]="sitesGradient(vm.data)">
+              <div class="donut donut--sites"
+                   [style.--h-pct]="sitesPct(vm.data).healthy + '%'"
+                   [style.--d-pct]="sitesPct(vm.data).degraded + '%'">
                 <div class="donut__hole">
                   <span class="donut__value">{{ vm.data.totalSites }}</span>
                   <span class="donut__label">Total Sites</span>
@@ -97,7 +99,8 @@
           <h3 class="chart-card__title">Edge Devices by Status</h3>
           <div class="chart-card__body">
             <div class="donut-wrap">
-              <div class="donut" [style.background]="devicesGradient(vm.data)">
+              <div class="donut donut--devices"
+                   [style.--on-pct]="devicesPct(vm.data).online + '%'">
                 <div class="donut__hole">
                   <span class="donut__value">{{ vm.data.totalEdgeDevices }}</span>
                   <span class="donut__label">Total Devices</span>

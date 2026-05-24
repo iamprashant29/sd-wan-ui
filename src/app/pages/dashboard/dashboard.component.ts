@@ -30,19 +30,6 @@ export class DashboardComponent {
     )
   );
 
-  protected sitesGradient(data: DashboardOverview): string {
-    const total = data.totalSites || 1;
-    const h = (data.healthySites / total) * 100;
-    const d = (data.degradedSites / total) * 100;
-    return `conic-gradient(#16a34a 0% ${h}%, #d97706 ${h}% ${h + d}%, #dc2626 ${h + d}% 100%)`;
-  }
-
-  protected devicesGradient(data: DashboardOverview): string {
-    const total = data.totalEdgeDevices || 1;
-    const onlinePct = (data.onlineDevices / total) * 100;
-    return `conic-gradient(#16a34a 0% ${onlinePct}%, #dc2626 ${onlinePct}% 100%)`;
-  }
-
   protected sitesPct(data: DashboardOverview) {
     const t = data.totalSites || 1;
     return {

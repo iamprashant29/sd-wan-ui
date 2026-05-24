@@ -28,6 +28,12 @@
   margin-bottom: 20px;
 }
 
+.summary-cards .card:nth-child(1) { animation-delay: 0.05s; }
+.summary-cards .card:nth-child(2) { animation-delay: 0.10s; }
+.summary-cards .card:nth-child(3) { animation-delay: 0.15s; }
+.summary-cards .card:nth-child(4) { animation-delay: 0.20s; }
+.summary-cards .card:nth-child(5) { animation-delay: 0.25s; }
+
 .card {
   background: #ffffff;
   border: 1px solid #e2e8f0;
@@ -154,6 +160,52 @@
   font-size: 12px;
 }
 
+/* ── Donut roll-in via @property ────────────────────── */
+@property --h-pct  { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+@property --d-pct  { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+@property --on-pct { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+
+/*
+  Only `from` is declared; the browser uses the element's own cascaded value
+  (Angular's inline style binding) as the `to` state, so each ring sweeps
+  from 0% to the live data value on first render.
+*/
+@keyframes sites-roll {
+  from { --h-pct: 0%; --d-pct: 0%; }
+}
+
+@keyframes devices-roll {
+  from { --on-pct: 0%; }
+}
+
+.donut--sites {
+  background: conic-gradient(
+    #16a34a 0% var(--h-pct),
+    #d97706 var(--h-pct) calc(var(--h-pct) + var(--d-pct)),
+    #dc2626 calc(var(--h-pct) + var(--d-pct)) 100%
+  );
+  animation: sites-roll 1s ease-out forwards;
+}
+
+.donut--devices {
+  background: conic-gradient(
+    #16a34a 0% var(--on-pct),
+    #dc2626 var(--on-pct) 100%
+  );
+  animation: devices-roll 1s ease-out forwards;
+}
+
+/* ── Legend fade-up ──────────────────────────────────── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+.legend__item:nth-child(1) { animation: fade-up 0.3s 0.5s both; }
+.legend__item:nth-child(2) { animation: fade-up 0.3s 0.6s both; }
+.legend__item:nth-child(3) { animation: fade-up 0.3s 0.7s both; }
+
+/* ── State boxes ─────────────────────────────────────── */
 .state-box {
   padding: 20px;
   border-radius: 10px;
