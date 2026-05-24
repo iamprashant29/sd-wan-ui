@@ -12,12 +12,11 @@ interface PageState {
 }
 
 @Component({
-  selector: 'app-organization',
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, RouterLink],
-  templateUrl: './organization.component.html',
-  styleUrls: ['./organization.component.css']
+    selector: 'app-organization',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [CommonModule, RouterLink],
+    templateUrl: './organization.component.html',
+    styleUrls: ['./organization.component.css']
 })
 export class OrganizationComponent {
   private readonly api = inject(OrganizationService);

@@ -15,12 +15,11 @@ interface PageState {
 }
 
 @Component({
-  selector: 'app-site-detail',
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, RouterLink, EdgeDeviceListComponent],
-  templateUrl: './site-detail.component.html',
-  styleUrls: ['./site-detail.component.css']
+    selector: 'app-site-detail',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [CommonModule, RouterLink, EdgeDeviceListComponent],
+    templateUrl: './site-detail.component.html',
+    styleUrls: ['./site-detail.component.css']
 })
 export class SiteDetailComponent {
   private readonly api = inject(SiteService);

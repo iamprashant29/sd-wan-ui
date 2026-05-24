@@ -12,12 +12,11 @@ interface ListState {
 }
 
 @Component({
-  selector: 'app-site-list',
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, RouterLink],
-  templateUrl: './site-list.component.html',
-  styleUrls: ['./site-list.component.css']
+    selector: 'app-site-list',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [CommonModule, RouterLink],
+    templateUrl: './site-list.component.html',
+    styleUrls: ['./site-list.component.css']
 })
 export class SiteListComponent {
   private readonly api = inject(SiteService);

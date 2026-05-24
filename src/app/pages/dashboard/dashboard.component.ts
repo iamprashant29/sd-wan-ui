@@ -12,12 +12,11 @@ interface PageState {
 }
 
 @Component({
-  selector: 'app-dashboard',
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, SiteListComponent],
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+    selector: 'app-dashboard',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [CommonModule, SiteListComponent],
+    templateUrl: './dashboard.component.html',
+    styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
   private readonly api = inject(DashboardService);

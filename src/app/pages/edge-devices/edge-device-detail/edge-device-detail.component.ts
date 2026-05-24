@@ -17,12 +17,11 @@ const CHART_H = 100;
 const PAD = 8;
 
 @Component({
-  selector: 'app-edge-device-detail',
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, FormsModule, RouterLink],
-  templateUrl: './edge-device-detail.component.html',
-  styleUrls: ['./edge-device-detail.component.css']
+    selector: 'app-edge-device-detail',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [CommonModule, FormsModule, RouterLink],
+    templateUrl: './edge-device-detail.component.html',
+    styleUrls: ['./edge-device-detail.component.css']
 })
 export class EdgeDeviceDetailComponent {
   private readonly api = inject(EdgeDeviceService);

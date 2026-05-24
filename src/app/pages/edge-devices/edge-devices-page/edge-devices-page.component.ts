@@ -12,12 +12,11 @@ interface PageState {
 }
 
 @Component({
-  selector: 'app-edge-devices-page',
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, RouterLink],
-  templateUrl: './edge-devices-page.component.html',
-  styleUrls: ['./edge-devices-page.component.css']
+    selector: 'app-edge-devices-page',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [CommonModule, RouterLink],
+    templateUrl: './edge-devices-page.component.html',
+    styleUrls: ['./edge-devices-page.component.css']
 })
 export class EdgeDevicesPageComponent {
   private readonly api = inject(EdgeDeviceService);

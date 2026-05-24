@@ -12,12 +12,11 @@ interface PageState {
 }
 
 @Component({
-  selector: 'app-sites-page',
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, RouterLink],
-  templateUrl: './sites-page.component.html',
-  styleUrls: ['./sites-page.component.css']
+    selector: 'app-sites-page',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [CommonModule, RouterLink],
+    templateUrl: './sites-page.component.html',
+    styleUrls: ['./sites-page.component.css']
 })
 export class SitesPageComponent {
   private readonly api = inject(SiteService);

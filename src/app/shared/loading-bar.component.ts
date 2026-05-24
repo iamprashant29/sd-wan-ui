@@ -3,12 +3,11 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { LoadingService } from './loading.service';
 
 @Component({
-  selector: 'app-loading-bar',
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [AsyncPipe],
-  template: `<div class="loading-bar" [class.loading-bar--active]="loadingService.isLoading$ | async"></div>`,
-  styles: [`
+    selector: 'app-loading-bar',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [AsyncPipe],
+    template: `<div class="loading-bar" [class.loading-bar--active]="loadingService.isLoading$ | async"></div>`,
+    styles: [`
     .loading-bar {
       position: fixed;
       top: 0;

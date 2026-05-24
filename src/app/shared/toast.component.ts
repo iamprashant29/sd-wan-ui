@@ -5,11 +5,10 @@ import { filter, switchMap } from 'rxjs/operators';
 import { AppError, ErrorService } from './error.service';
 
 @Component({
-  selector: 'app-toast',
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [AsyncPipe],
-  template: `
+    selector: 'app-toast',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [AsyncPipe],
+    template: `
     @if (errorService.currentError$ | async; as err) {
       <div class="toast toast--error" role="alert" aria-live="assertive">
         <span class="toast__icon">!</span>
@@ -18,7 +17,7 @@ import { AppError, ErrorService } from './error.service';
       </div>
     }
   `,
-  styles: [`
+    styles: [`
     .toast {
       position: fixed;
       top: 20px;
