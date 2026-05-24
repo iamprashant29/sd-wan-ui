@@ -6,7 +6,13 @@
   } @else if (vm.data) {
     <div class="page">
       <nav class="breadcrumb">
-        <a class="breadcrumb__link" routerLink="/sites">Sites</a>
+        @if (vm.orgId) {
+          <a class="breadcrumb__link" routerLink="/organization">Organizations</a>
+          <span class="breadcrumb__sep">/</span>
+          <a class="breadcrumb__link" [routerLink]="['/organization', vm.orgId]">{{ vm.orgName }}</a>
+        } @else {
+          <a class="breadcrumb__link" routerLink="/sites">Sites</a>
+        }
         <span class="breadcrumb__sep">/</span>
         <span class="breadcrumb__current">{{ vm.data.name }}</span>
       </nav>

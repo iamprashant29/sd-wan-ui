@@ -58,7 +58,8 @@
             @for (site of vm.data.sites; track site.id) {
               <tr>
                 <td>
-                  <a class="site-link" [routerLink]="['/sites', site.id]">{{ site.name }}</a>
+                  <a class="site-link" [routerLink]="['/sites', site.id]"
+                     [queryParams]="{ orgId: vm.data.orgId, orgName: vm.data.orgName }">{{ site.name }}</a>
                 </td>
                 <td>
                   <span class="badge" [ngClass]="'badge--' + (site.status ?? '').toLowerCase()">
