@@ -23,7 +23,7 @@
           <td>{{ device.role }}</td>
           <td>{{ device.uptime }}</td>
           <td>
-            <span class="badge" [ngClass]="'badge--' + (device.status ?? '').toLowerCase()">
+            <span class="badge" [ngClass]="'badge--' + device.status.toLowerCase()">
               <span class="badge__dot"></span>{{ device.status }}
             </span>
           </td>

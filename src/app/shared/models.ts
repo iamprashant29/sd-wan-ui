@@ -86,6 +86,8 @@ export interface EdgeDeviceDetail {
   model: string;
   siteName: string;
   siteId: string;
+  orgId: string;
+  orgName: string;
   wanInterfaces: DeviceInterface[];
   lanInterfaces: DeviceInterface[];
   uplinkHistory: BandwidthPoint[];
@@ -123,6 +125,9 @@ export interface EdgeDeviceApiResponse {
   systemIp: string;
   model: string;
   associatedSite: string;
+  wanInterfaces: DeviceInterface[];
+  lanInterfaces: DeviceInterface[];
+  uplinkHistory: BandwidthPoint[];
 }
 
 export interface SiteHealthApiResponse {

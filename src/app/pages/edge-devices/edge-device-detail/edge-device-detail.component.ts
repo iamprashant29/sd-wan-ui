@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { catchError, map, of, startWith, switchMap } from 'rxjs';
-import { SdwanApiService } from '../../../core/sdwan-api.service';
-import { BandwidthPoint, EdgeDeviceDetail } from '../../../core/models';
+import { EdgeDeviceService } from '../edge-device.service';
+import { BandwidthPoint, EdgeDeviceDetail } from '../../../shared/models';
 
 interface PageState {
   loading: boolean;
@@ -17,14 +17,14 @@ const CHART_H = 100;
 const PAD = 8;
 
 @Component({
-  selector: 'app-edge-device-detail',
-  standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
-  templateUrl: './edge-device-detail.component.html',
-  styleUrls: ['./edge-device-detail.component.css']
+    selector: 'app-edge-device-detail',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [CommonModule, FormsModule, RouterLink],
+    templateUrl: './edge-device-detail.component.html',
+    styleUrls: ['./edge-device-detail.component.css']
 })
 export class EdgeDeviceDetailComponent {
-  private readonly api = inject(SdwanApiService);
+  private readonly api = inject(EdgeDeviceService);
   private readonly route = inject(ActivatedRoute);
 
   protected readonly timeRanges = ['Last 6 hours', 'Last 24 hours', 'Last 7 days'];

@@ -1,14 +1,35 @@
-<div class="page">
-  <div class="breadcrumb">Edge Devices</div>
-  <h1 class="page-title">Edge Devices</h1>
-  <p class="page-subtitle">All edge devices across the network.</p>
+@if (vm$ | async; as vm) {
+  @if (vm.loading) {
+    <div class="page">
+      <div class="sk sk--h12 sk--w20" style="margin-bottom:20px"></div>
+      <div class="sk sk--h32 sk--w30" style="margin-bottom:6px"></div>
+      <div class="sk sk--h10 sk--w60" style="margin-bottom:24px"></div>
+      <div class="sk-panel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+          <span class="sk sk--h16 sk--w20"></span>
+          <span class="sk sk--h12 sk--w10"></span>
+        </div>
+        @for (n of [1,2,3,4,5,6,7]; track n) {
+          <div class="sk-row">
+            <span class="sk sk--h12 sk--w20"></span>
+            <span class="sk sk--h12 sk--w10"></span>
+            <span class="sk sk--h24 sk--w10"></span>
+            <span class="sk sk--h12 sk--w10"></span>
+            <span class="sk sk--h12 sk--w10"></span>
+            <span class="sk sk--h12 sk--w10"></span>
+            <span class="sk sk--h12 sk--w10"></span>
+          </div>
+        }
+      </div>
+    </div>
+  } @else if (vm.error) {
+    <div class="state-box state-box--error">{{ vm.error }}</div>
+  } @else {
+    <div class="page">
+      <div class="breadcrumb">Edge Devices</div>
+      <h1 class="page-title">Edge Devices</h1>
+      <p class="page-subtitle">All edge devices across the network.</p>
 
-  @if (vm$ | async; as vm) {
-    @if (vm.loading) {
-      <div class="state-box state-box--loading">Loading edge devices…</div>
-    } @else if (vm.error) {
-      <div class="state-box state-box--error">{{ vm.error }}</div>
-    } @else {
       <div class="table-card">
         <div class="table-card__header">
           <h3 class="table-card__title">All Devices</h3>
@@ -36,7 +57,7 @@
                 </td>
                 <td>{{ device.role }}</td>
                 <td>
-                  <span class="badge" [ngClass]="'badge--' + (device.status ?? '').toLowerCase()">
+                  <span class="badge" [ngClass]="'badge--' + device.status.toLowerCase()">
                     <span class="badge__dot"></span>{{ device.status }}
                   </span>
                 </td>
@@ -59,6 +80,6 @@
           </tbody>
         </table>
       </div>
-    }
+    </div>
   }
-</div>
+}

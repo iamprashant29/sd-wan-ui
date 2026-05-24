@@ -1,6 +1,26 @@
 @if (vm$ | async; as vm) {
   @if (vm.loading) {
-    <div class="state-box state-box--loading">Loading organizations…</div>
+    <div class="page">
+      <div class="sk sk--h12 sk--w20" style="margin-bottom:20px"></div>
+      <div class="sk sk--h32 sk--w40" style="margin-bottom:6px"></div>
+      <div class="sk sk--h10 sk--w60" style="margin-bottom:24px"></div>
+      <div class="sk-panel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+          <span class="sk sk--h16 sk--w30"></span>
+          <span class="sk sk--h12 sk--w10"></span>
+        </div>
+        @for (n of [1,2,3,4]; track n) {
+          <div class="sk-row">
+            <span class="sk sk--h12 sk--w20"></span>
+            <span class="sk sk--h24 sk--w10"></span>
+            <span class="sk sk--h12 sk--w10"></span>
+            <span class="sk sk--h12 sk--w10"></span>
+            <span class="sk sk--h12 sk--w10"></span>
+            <span class="sk sk--h12 sk--w10"></span>
+          </div>
+        }
+      </div>
+    </div>
   } @else if (vm.error) {
     <div class="state-box state-box--error">{{ vm.error }}</div>
   } @else if (vm.data) {
@@ -32,7 +52,7 @@
                   <a class="org-link" [routerLink]="['/organization', org.orgId]">{{ org.orgName }}</a>
                 </td>
                 <td>
-                  <span class="badge" [ngClass]="'badge--' + (org.status ?? '').toLowerCase()">
+                  <span class="badge" [ngClass]="'badge--' + org.status.toLowerCase()">
                     <span class="badge__dot"></span>{{ org.status }}
                   </span>
                 </td>

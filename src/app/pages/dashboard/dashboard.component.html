@@ -5,7 +5,34 @@
 
   @if (vm$ | async; as vm) {
     @if (vm.loading) {
-      <div class="state-box state-box--loading">Loading overview…</div>
+      <div class="summary-cards" style="margin-bottom:20px">
+        @for (n of [1,2,3,4,5]; track n) {
+          <div class="sk-card">
+            <span class="sk sk--h10 sk--w60"></span>
+            <span class="sk sk--h32 sk--w40"></span>
+          </div>
+        }
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px">
+        @for (n of [1,2]; track n) {
+          <div class="sk-panel" style="display:flex;flex-direction:column;gap:12px">
+            <span class="sk sk--h16 sk--w40"></span>
+            <span class="sk sk--h160 sk--w100"></span>
+          </div>
+        }
+      </div>
+      <div class="sk-panel">
+        <span class="sk sk--h16 sk--w30" style="margin-bottom:16px"></span>
+        @for (n of [1,2,3,4,5]; track n) {
+          <div class="sk-row">
+            <span class="sk sk--h12 sk--w20"></span>
+            <span class="sk sk--h12 sk--w10"></span>
+            <span class="sk sk--h12 sk--w10"></span>
+            <span class="sk sk--h12 sk--w10"></span>
+            <span class="sk sk--h12 sk--w10"></span>
+          </div>
+        }
+      </div>
     } @else if (vm.error) {
       <div class="state-box state-box--error">{{ vm.error }}</div>
     } @else if (vm.data) {
@@ -39,7 +66,9 @@
           <h3 class="chart-card__title">Sites by Status</h3>
           <div class="chart-card__body">
             <div class="donut-wrap">
-              <div class="donut" [style.background]="sitesGradient(vm.data)">
+              <div class="donut donut--sites"
+                   [style.--h-pct]="sitesPct(vm.data).healthy + '%'"
+                   [style.--d-pct]="sitesPct(vm.data).degraded + '%'">
                 <div class="donut__hole">
                   <span class="donut__value">{{ vm.data.totalSites }}</span>
                   <span class="donut__label">Total Sites</span>
@@ -70,7 +99,8 @@
           <h3 class="chart-card__title">Edge Devices by Status</h3>
           <div class="chart-card__body">
             <div class="donut-wrap">
-              <div class="donut" [style.background]="devicesGradient(vm.data)">
+              <div class="donut donut--devices"
+                   [style.--on-pct]="devicesPct(vm.data).online + '%'">
                 <div class="donut__hole">
                   <span class="donut__value">{{ vm.data.totalEdgeDevices }}</span>
                   <span class="donut__label">Total Devices</span>

@@ -1,19 +1,55 @@
 @if (vm$ | async; as vm) {
   @if (vm.loading) {
-    <div class="state-box state-box--loading">Loading site details…</div>
+    <div class="page">
+      <div class="sk sk--h12 sk--w30" style="margin-bottom:20px"></div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+        <span class="sk sk--h32 sk--w40"></span>
+        <span class="sk sk--h24 sk--w10"></span>
+      </div>
+      <div class="sk sk--h10 sk--w60" style="margin-bottom:24px"></div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,220px));gap:12px;margin-bottom:20px">
+        @for (n of [1,2,3]; track n) {
+          <div class="sk-card">
+            <span class="sk sk--h10 sk--w60"></span>
+            <span class="sk sk--h32 sk--w40"></span>
+          </div>
+        }
+      </div>
+      <div class="sk-panel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+          <span class="sk sk--h16 sk--w30"></span>
+          <span class="sk sk--h12 sk--w10"></span>
+        </div>
+        @for (n of [1,2,3,4,5]; track n) {
+          <div class="sk-row">
+            <span class="sk sk--h12 sk--w20"></span>
+            <span class="sk sk--h12 sk--w10"></span>
+            <span class="sk sk--h24 sk--w10"></span>
+            <span class="sk sk--h12 sk--w10"></span>
+            <span class="sk sk--h12 sk--w10"></span>
+          </div>
+        }
+      </div>
+    </div>
   } @else if (vm.error) {
     <div class="state-box state-box--error">{{ vm.error }}</div>
   } @else if (vm.data) {
     <div class="page">
       <nav class="breadcrumb">
-        <a class="breadcrumb__link" routerLink="/sites">Sites</a>
+        @if (vm.orgId) {
+          <a class="breadcrumb__link" routerLink="/organization">Organizations</a>
+          <span class="breadcrumb__sep">/</span>
+          <a class="breadcrumb__link" [routerLink]="['/organization', vm.orgId]">{{ vm.orgName }}</a>
+        } @else {
+          <a class="breadcrumb__link" routerLink="/sites">Sites</a>
+        }
         <span class="breadcrumb__sep">/</span>
         <span class="breadcrumb__current">{{ vm.data.name }}</span>
       </nav>
 
       <div class="page-header">
         <h1 class="page-title">{{ vm.data.name }}</h1>
-        <span class="badge" [ngClass]="'badge--' + (vm.data.status ?? '').toLowerCase()">
+        <span class="badge" [ngClass]="'badge--' + vm.data.status.toLowerCase()">
           <span class="badge__dot"></span>{{ vm.data.status }}
         </span>
       </div>

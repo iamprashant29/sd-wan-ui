@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { catchError, map, of, startWith, switchMap } from 'rxjs';
-import { SdwanApiService } from '../../../core/sdwan-api.service';
-import { OrganizationDetail } from '../../../core/models';
+import { OrganizationService } from '../organization.service';
+import { OrganizationDetail } from '../../../shared/models';
 
 interface PageState {
   loading: boolean;
@@ -12,14 +12,14 @@ interface PageState {
 }
 
 @Component({
-  selector: 'app-organization-detail',
-  standalone: true,
-  imports: [CommonModule, RouterLink],
-  templateUrl: './organization-detail.component.html',
-  styleUrls: ['./organization-detail.component.css']
+    selector: 'app-organization-detail',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [CommonModule, RouterLink],
+    templateUrl: './organization-detail.component.html',
+    styleUrls: ['./organization-detail.component.css']
 })
 export class OrganizationDetailComponent {
-  private readonly api = inject(SdwanApiService);
+  private readonly api = inject(OrganizationService);
   private readonly route = inject(ActivatedRoute);
 
   protected readonly vm$ = this.route.paramMap.pipe(
