@@ -146,9 +146,9 @@ export class SdwanApiService {
           siteId,
           orgId: org?.orgId ?? '',
           orgName: org?.orgName ?? 'Organization',
-          wanInterfaces: [],
-          lanInterfaces: [],
-          uplinkHistory: []
+          wanInterfaces: device.wanInterfaces ?? [],
+          lanInterfaces: device.lanInterfaces ?? [],
+          uplinkHistory: device.uplinkHistory ?? []
         };
       })
     );

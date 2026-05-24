@@ -125,6 +125,9 @@ export interface EdgeDeviceApiResponse {
   systemIp: string;
   model: string;
   associatedSite: string;
+  wanInterfaces: DeviceInterface[];
+  lanInterfaces: DeviceInterface[];
+  uplinkHistory: BandwidthPoint[];
 }
 
 export interface SiteHealthApiResponse {

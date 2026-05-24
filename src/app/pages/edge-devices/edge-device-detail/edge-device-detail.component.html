@@ -23,34 +23,36 @@
       </div>
       <p class="page-subtitle">Live interface view and WAN uplink history for the selected edge device.</p>
 
-      <!-- Metadata Row -->
-      <div class="meta-row">
-        <div class="meta-item">
-          <span class="meta-item__label">Role</span>
-          <span class="meta-item__value">{{ vm.data.role }}</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-item__label">Status</span>
-          <span class="meta-item__value" [ngClass]="vm.data.status === 'ONLINE' ? 'online-text' : 'offline-text'">
+      <!-- Summary Cards -->
+      <div class="summary-cards">
+        <div class="card">
+          <span class="card__label">Status</span>
+          <span class="card__value card__value--text"
+                [ngClass]="vm.data.status === 'ONLINE' ? 'card__value--online' : 'card__value--offline'">
             {{ vm.data.status }}
           </span>
         </div>
-        <div class="meta-item">
-          <span class="meta-item__label">Uptime</span>
-          <span class="meta-item__value">{{ vm.data.uptime }}</span>
+        <div class="card">
+          <span class="card__label">Role</span>
+          <span class="card__value card__value--text">{{ vm.data.role }}</span>
         </div>
-        <div class="meta-item">
-          <span class="meta-item__label">System IP</span>
-          <span class="meta-item__value">{{ vm.data.systemIp }}</span>
+        <div class="card">
+          <span class="card__label">Model</span>
+          <span class="card__value card__value--text">{{ vm.data.model }}</span>
         </div>
-        <div class="meta-item">
-          <span class="meta-item__label">Model</span>
-          <span class="meta-item__value">{{ vm.data.model }}</span>
+        <div class="card">
+          <span class="card__label">System IP</span>
+          <span class="card__value card__value--text card__value--mono">{{ vm.data.systemIp }}</span>
+        </div>
+        <div class="card">
+          <span class="card__label">Uptime</span>
+          <span class="card__value card__value--text">{{ vm.data.uptime }}</span>
+        </div>
+        <div class="card">
+          <span class="card__label">Site</span>
+          <span class="card__value card__value--text">{{ vm.data.siteName }}</span>
         </div>
       </div>
-
-      <!-- Site Chip -->
-      <div class="site-chip">{{ vm.data.siteName }}</div>
 
       <!-- Two-Column Detail -->
       <div class="detail-grid">
