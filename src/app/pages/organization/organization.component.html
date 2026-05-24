@@ -32,7 +32,7 @@
                   <a class="org-link" [routerLink]="['/organization', org.orgId]">{{ org.orgName }}</a>
                 </td>
                 <td>
-                  <span class="badge" [ngClass]="'badge--' + (org.status ?? '').toLowerCase()">
+                  <span class="badge" [ngClass]="'badge--' + org.status.toLowerCase()">
                     <span class="badge__dot"></span>{{ org.status }}
                   </span>
                 </td>

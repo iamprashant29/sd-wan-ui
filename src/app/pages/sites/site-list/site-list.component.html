@@ -25,7 +25,7 @@
             <tr>
               <td><a class="site-link" [routerLink]="['/sites', site.id]">{{ site.name }}</a></td>
               <td>
-                <span class="badge" [ngClass]="'badge--' + (site.status ?? '').toLowerCase()">
+                <span class="badge" [ngClass]="'badge--' + site.status.toLowerCase()">
                   <span class="badge__dot"></span>{{ site.status }}
                 </span>
               </td>

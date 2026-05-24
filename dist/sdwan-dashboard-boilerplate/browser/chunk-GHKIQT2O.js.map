@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/sites/sites.routes.ts"],
+  "sourcesContent": ["import { Routes } from '@angular/router';\n\nexport const sitesRoutes: Routes = [\n  {\n    path: '',\n    loadComponent: () =>\n      import('./sites-page/sites-page.component').then(m => m.SitesPageComponent)\n  },\n  {\n    path: ':siteId',\n    loadComponent: () =>\n      import('./site-detail/site-detail.component').then(m => m.SiteDetailComponent)\n  }\n];\n"],
+  "mappings": ";;;AAEO,IAAM,cAAsB;EACjC;IACE,MAAM;IACN,eAAe,MACb,OAAO,qBAAmC,EAAE,KAAK,OAAK,EAAE,kBAAkB;;EAE9E;IACE,MAAM;IACN,eAAe,MACb,OAAO,qBAAqC,EAAE,KAAK,OAAK,EAAE,mBAAmB;;;",
+  "names": []
+}

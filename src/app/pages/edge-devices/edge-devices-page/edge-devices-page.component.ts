@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { catchError, map, of, startWith } from 'rxjs';
 import { EdgeDeviceService } from '../edge-device.service';
@@ -14,6 +14,7 @@ interface PageState {
 @Component({
   selector: 'app-edge-devices-page',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, RouterLink],
   templateUrl: './edge-devices-page.component.html',
   styleUrls: ['./edge-devices-page.component.css']

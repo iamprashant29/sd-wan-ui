@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { catchError, map, of, startWith } from 'rxjs';
 import { DashboardService } from '../dashboard/dashboard.service';
 import { DashboardOverview } from '../../shared/models';
@@ -14,6 +14,7 @@ interface PageState {
 @Component({
   selector: 'app-sdwan-dashboard',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, SiteListComponent],
   templateUrl: './sdwan-dashboard.component.html',
   styleUrls: ['./sdwan-dashboard.component.css']

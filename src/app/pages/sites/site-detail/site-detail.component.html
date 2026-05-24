@@ -19,7 +19,7 @@
 
       <div class="page-header">
         <h1 class="page-title">{{ vm.data.name }}</h1>
-        <span class="badge" [ngClass]="'badge--' + (vm.data.status ?? '').toLowerCase()">
+        <span class="badge" [ngClass]="'badge--' + vm.data.status.toLowerCase()">
           <span class="badge__dot"></span>{{ vm.data.status }}
         </span>
       </div>

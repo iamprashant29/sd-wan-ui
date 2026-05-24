@@ -17,7 +17,7 @@
       <!-- Title -->
       <div class="page-header">
         <h1 class="page-title">{{ vm.data.name }}</h1>
-        <span class="status-badge" [ngClass]="'status-badge--' + (vm.data.status ?? '').toLowerCase()">
+        <span class="status-badge" [ngClass]="'status-badge--' + vm.data.status.toLowerCase()">
           <span class="status-badge__dot"></span>{{ vm.data.status }}
         </span>
       </div>
@@ -76,7 +76,7 @@
                   <tr>
                     <td>{{ iface.name }}</td>
                     <td>
-                      <span class="if-status" [ngClass]="'if-status--' + (iface.status ?? '').toLowerCase()">
+                      <span class="if-status" [ngClass]="'if-status--' + iface.status.toLowerCase()">
                         <span class="if-status__dot"></span>{{ iface.status }}
                       </span>
                     </td>
@@ -102,7 +102,7 @@
                   <tr>
                     <td>{{ iface.name }}</td>
                     <td>
-                      <span class="if-status" [ngClass]="'if-status--' + (iface.status ?? '').toLowerCase()">
+                      <span class="if-status" [ngClass]="'if-status--' + iface.status.toLowerCase()">
                         <span class="if-status__dot"></span>{{ iface.status }}
                       </span>
                     </td>

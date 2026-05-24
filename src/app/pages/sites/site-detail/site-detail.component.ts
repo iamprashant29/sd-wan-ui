@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { catchError, combineLatest, map, of, startWith, switchMap } from 'rxjs';
 import { SiteService } from '../site.service';
@@ -17,6 +17,7 @@ interface PageState {
 @Component({
   selector: 'app-site-detail',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, RouterLink, EdgeDeviceListComponent],
   templateUrl: './site-detail.component.html',
   styleUrls: ['./site-detail.component.css']

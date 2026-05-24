@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/styles.css"],
+  "sourcesContent": ["* {\n  box-sizing: border-box;\n}\n\nhtml,\nbody {\n  margin: 0;\n  padding: 0;\n  min-height: 100%;\n  font-family: \"Segoe UI\", \"Avenir Next\", sans-serif;\n  font-size: 14px;\n  color: #1a2035;\n  background: #f0f4f8;\n  line-height: 1.5;\n}\n\na {\n  color: inherit;\n  text-decoration: none;\n}\n\nh1, h2, h3, h4 {\n  margin: 0;\n}\n"],
+  "mappings": ";AAAA;AACE,cAAY;AACd;AAEA;AACA;AACE,UAAQ;AACR,WAAS;AACT,cAAY;AACZ;AAAA,IAAa,UAAU;AAAA,IAAE,aAAa;AAAA,IAAE;AACxC,aAAW;AACX,SAAO;AACP,cAAY;AACZ,eAAa;AACf;AAEA;AACE,SAAO;AACP,mBAAiB;AACnB;AAEA;AAAI;AAAI;AAAI;AACV,UAAQ;AACV;",
+  "names": []
+}
